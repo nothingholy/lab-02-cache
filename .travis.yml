@@ -9,9 +9,6 @@ before_script:
 
 jobs:
   include:
-    - name: "tests"
-      script:
-        - docker run -t -v $(pwd):/opt/builder/ --entrypoint ./scripts/tests.sh toliak/bootstrap-cpp
     - name: "coverage"
       script:
         - docker run -t -v $(pwd):/opt/builder/ --entrypoint ./scripts/coverage.sh toliak/bootstrap-cpp
