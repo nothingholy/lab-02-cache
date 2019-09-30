@@ -9,15 +9,9 @@ before_script:
 
 jobs:
   include:
-    - name: "coverage"
-      script:
-        - docker run -t -v $(pwd):/opt/builder/ --entrypoint ./scripts/coverage.sh toliak/bootstrap-cpp
     - name: "quality"
       script:
         - docker run -t -v $(pwd):/opt/builder/ --entrypoint ./scripts/duplication.sh toliak/bootstrap-cpp
-    - name: "memory leaks"
-      script:
-        - docker run -t -v $(pwd):/opt/builder/ --entrypoint ./scripts/valgrind.sh toliak/bootstrap-cpp
 
 notifications:
   email: false
