@@ -38,8 +38,7 @@ target_include_directories(lab-02-cache
 )
 
 
-enable_testing()
-add_test(NAME unit_tests COMMAND tests) 
+
 
 if(BUILD_COVERAGE)
   set(ENABLE_COVERAGE ON CACHE BOOL "Enable coverage build." FORCE)
