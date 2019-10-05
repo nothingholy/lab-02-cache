@@ -1,4 +1,4 @@
-[![forthebadge](https://forthebadge.com/images/badges/60-percent-of-the-time-works-every-time.svg)](https://forthebadge.com) ![nothingholy](https://img.shields.io/badge/nothing-holy-red) ![GitHub repo size](https://img.shields.io/github/repo-size/nothingholy/lab-02-cache)
+[![Build Status](https://travis-ci.org/nothingholy/lab-02-cache.svg?branch=master)](https://travis-ci.org/nothingholy/lab-02-cache) [![forthebadge](https://forthebadge.com/images/badges/60-percent-of-the-time-works-every-time.svg)](https://forthebadge.com) ![nothingholy](https://img.shields.io/badge/nothing-holy-red) ![GitHub repo size](https://img.shields.io/github/repo-size/nothingholy/lab-02-cache)
 # Лабораторная работа №2
 
 > Кэш - промежуточный буфер с быстрым доступом, содержащий информацию, которая может быть запрошена с наибольшей вероятностью. Доступ к данным в кэше осуществляется быстрее, чем выборка исходных данных из более медленной памяти или удаленного источника, однако её объём существенно ограничен по сравнению с хранилищем исходных данных.
