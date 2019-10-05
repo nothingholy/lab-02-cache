@@ -106,6 +106,22 @@ CacheExp::CacheExp(int min, int max) {
     buffer={};
 }
 
+void CacheExp::cicle(int key,int sizeBuffer) {
+    if(key==1){
+        for(int i=0;i<iterations;i++)
+            straight(sizeBuffer);
+    }
+    else if(key==2){
+        for(int i=0;i<iterations;i++)
+            back(sizeBuffer);
+    }
+    else if(key==3){
+        for(int i=0;i<iterations;i++)
+            random(sizeBuffer);
+    }
+
+}
+
 int CacheExp::toSize(int kbSize) {
     return kbSize*1024/ sizeof(int);
 }
@@ -128,30 +144,24 @@ void CacheExp::warmingUp(int sizeBuffer){
 
 void CacheExp::straight(int sizeBuffer){
     int temp=0;
-    for(int j=0;j<iterations;j++) {
-        for (int i = 0; i < sizeBuffer; i++) {
-            temp = buffer[i];
-        }
+    for (int i = 0; i < sizeBuffer; i++) {
+        temp = buffer[i];
     }
     temp++;
 }
 
 void CacheExp::back(int sizeBuffer) {
     int temp=0;
-    for(int i=0;i<iterations;i++){
-        for(int j=sizeBuffer-1;j>=0;j--){
-            temp=buffer[j];
-        }
+    for(int j=sizeBuffer-1;j>=0;j--){
+        temp=buffer[j];
     }
     temp++;
 }
 
 void CacheExp::random(int sizeBuffer) {
     int temp=0;
-    for(int i=0;i<iterations;i++){
-        for(int j=0;j<sizeBuffer;j++){
-            temp=buffer[rand()%sizeBuffer];
-        }
+    for(int j=0;j<sizeBuffer;j++){
+        temp=buffer[rand()%sizeBuffer];
     }
     temp++;
 }
@@ -164,7 +174,7 @@ void CacheExp::start() {
         warmingUp(temp);
 
         auto time1=chrono::high_resolution_clock::now();
-        straight(temp);
+        cicle(1,temp);
         auto time2=chrono::high_resolution_clock::now();
         auto time=chrono::duration_cast<chrono::microseconds>(time2-time1).count();
         Data data("Forward",i+1,time);
@@ -172,7 +182,7 @@ void CacheExp::start() {
         toString(str,i+1,"Straight",time,temp);
 
         time1=chrono::high_resolution_clock::now();
-        back(temp);
+        cicle(2,temp);
         time2=chrono::high_resolution_clock::now();
         time=chrono::duration_cast<chrono::microseconds>(time2-time1).count();
         Data data1("Back",i+1,time);
@@ -180,7 +190,7 @@ void CacheExp::start() {
         toString(str,i+1,"Back",time,temp);
 
         time1=chrono::high_resolution_clock::now();
-        random(temp);
+        cicle(3,temp);
         time2=chrono::high_resolution_clock::now();
         time=chrono::duration_cast<chrono::microseconds>(time2-time1).count();
         Data data2("Random",i+1,time);

@@ -36,6 +36,7 @@ private:
     vector<Data> experiments;
 public:
     CacheExp(int min,int max);
+    void cicle(int key,int);
     int toSize(int kbSize);
     void initBuffer(int sizeBuffer);
     void warmingUp(int sizeBuffer);
